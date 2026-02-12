@@ -1,3 +1,3 @@
 <x-layout>
-<x-card/>
+<x-card name="shoes"/>
 </x-layout>
