@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 Route::get('/login',[LoginController::class,'create']);
 Route::PUT('/login',[LoginController::class,'store']);
+Route::get('/logout',[LoginController::class,'logout']);
 
 Route::get('/register',[RegisterController::class,'create']);
 Route::PUT('/register',[RegisterController::class,'store']);

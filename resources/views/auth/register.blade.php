@@ -9,12 +9,12 @@
             <input type="email" class="input" placeholder="Email" name="email" required/>
 
             <label class="label">username</label>
-            <input type="text" class="input" placeholder="Username" name="username" required/>
+            <input type="text" class="input" placeholder="Username" name="name" required/>
 
             <label class="label">Password</label>
             <input type="password" class="input" placeholder="Password" name="password" required/>
 
-            <button class="btn btn-neutral mt-4">Login</button>
+            <button class="btn btn-neutral mt-4">Register</button>
         </fieldset>
     </form>
 </x-layout>

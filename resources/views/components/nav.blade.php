@@ -41,7 +41,12 @@
                     </a>
                 </li>
                 <li><a href="/products">Products</a></li>
-                <li><a href="/login">LogIn</a></li>
+                @auth
+                    <li><a href="/logout">Logout</a></li>
+                @endauth
+                @guest
+                    <li><a href="/login">LogIn</a></li>
+                @endguest
             </ul>
         </div>
     </div>
