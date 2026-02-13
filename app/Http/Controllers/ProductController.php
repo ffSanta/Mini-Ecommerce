@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+        //only member can create guest will see all product
         $products = Product::all();
+//        $products = Product::query()->where([
+//            'user_id' => Auth::id()
+//        ])->get();
         return view('products.index',['products'=>$products]);
     }
 
@@ -29,12 +34,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required',
             'price' => 'required | decimal:0,2',
             'description' => 'required',
         ]);
-        Product::create($data);
+
+        Product::create([
+            'user_id' => Auth::id(),
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+        ]);
         return redirect('/products');
     }
 
