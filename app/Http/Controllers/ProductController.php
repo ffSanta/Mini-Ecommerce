@@ -41,39 +41,39 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Product $id)
     {
-        return view('products.show',['product'=>$product]);
+        return view('products.show',['product'=>$id]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Product $id)
     {
-        dd($product);
-        return view('products.edit',['product'=>$product]);
+        return view('products.edit',['product'=>$id]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $id)
     {
         $data = $request->validate([
             'name' => 'required',
             'price' => 'required | decimal:0,2',
             'description' => 'required',
         ]);
-        Product::update($data);
+        $id->update($data);
         return redirect('/products');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Product $id)
     {
-        //
+        $id->delete();
+        return redirect('/products');
     }
 }

@@ -1,8 +1,7 @@
 <x-layout>
-
     <form method="post" action="/products/{{$product->id}}">
         @csrf
-        @method('PUT')
+        @method('PATCH')
         <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 m-auto">
             <legend class="fieldset-legend">Update Products</legend>
 

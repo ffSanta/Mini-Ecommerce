@@ -1,5 +1,5 @@
 <x-layout>
-    <form method="post" action="/products/{{$product->id}}">
+    <form method="post" action="/products">
         @csrf
         @method('PUT')
         <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 m-auto">

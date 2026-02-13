@@ -20,5 +20,5 @@ Route::get('/products/create',[ProductController::class,'create']);
 Route::put('/products',[ProductController::class,'store']);
 Route::get('/products/{id}',[ProductController::class,'show']);
 Route::get('/products/{id}/edit',[ProductController::class,'edit']);
-Route::PUT('/products/{id}',[ProductController::class,'update']);
+Route::PATCH('/products/{id}',[ProductController::class,'update']);
 Route::delete('/products/{id}',[ProductController::class,'destroy']);
