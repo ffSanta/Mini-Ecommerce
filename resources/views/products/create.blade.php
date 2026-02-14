@@ -1,4 +1,7 @@
 <x-layout>
+    @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+    @endforeach
     <form method="post" action="/products">
         @csrf
         @method('PUT')
@@ -13,6 +16,9 @@
 
             <label class="label">price</label>
             <input type="text" class="input" placeholder="price" name="price" required/>
+
+            <!---- category ---->
+            <input type="text" name="category_id" value="{{$category}}" required/>
 
             <button class="btn btn-neutral mt-4">Create</button>
         </fieldset>

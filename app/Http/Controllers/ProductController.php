@@ -13,21 +13,25 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //only member can create guest will see all product
         $products = Product::all();
-//        $products = Product::query()->where([
-//            'user_id' => Auth::id()
-//        ])->get();
         return view('products.index',['products'=>$products]);
+    }
+
+    public function query(string $categoryId)
+    {
+        //only member can create guest will see all product
+        $products = Product::query()->where([
+            'user_id' => Auth::id(), 'product_categories_id' => $categoryId
+        ])->get();
+        return view('products.query',['products'=>$products, 'categoryId'=>$categoryId]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $categoryId)
     {
-
-        return view('products.create');
+        return view('products.create',['category'=>$categoryId]);
     }
     /**
      * Store a newly created resource in storage.
@@ -42,11 +46,12 @@ class ProductController extends Controller
 
         Product::create([
             'user_id' => Auth::id(),
+            'product_categories_id' => $request->category_id,
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
         ]);
-        return redirect('/products');
+        return redirect('/products/category/');
     }
 
     /**

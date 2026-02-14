@@ -18,7 +18,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
-            return redirect()->intended('products');
+            return redirect()->intended('/products/category');
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
