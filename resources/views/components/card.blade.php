@@ -1,6 +1,7 @@
 @props([
     'name' => 'NULL',
-    'description' => '0.00',
+    'description' => 'NULL',
+    'price' => '0.00',
     'id' => '#',
 ])
 <div class="card bg-base-100 w-96 shadow-sm">
@@ -10,8 +11,11 @@
             alt="Shoes"/>
     </figure>
     <div class="card-body">
-        <h2 class="card-title">{{$name}}</h2>
-        <p>{{$description}}</p>
+        <div class="grid grid-cols-6 gap-4">
+            <p class="ml-5 text-xl col-start-1 col-end-5 ">{{$name}}</p>
+            <p class="text-xl text-center col-span-2 col-end-7 ">{{$price}}</p>
+            <p class="ml-5 text-xl  col-start-1 col-end-7 ">{{$description}}</p>
+        </div>
         <div class="card-actions justify-end">
             @if($id == '#')
                 <a href="/products" class="btn btn-primary">Back</a>
