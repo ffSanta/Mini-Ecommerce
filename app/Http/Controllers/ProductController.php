@@ -51,7 +51,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
         ]);
-        return redirect('/products/category/');
+        return redirect('/products/query/'.$request->category_id);
     }
 
     /**

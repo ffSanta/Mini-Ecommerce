@@ -17,18 +17,22 @@
             <p class="ml-5 text-xl  col-start-1 col-end-7 ">{{$description}}</p>
         </div>
         <div class="card-actions justify-end">
-            @if($id == '#')
-                <a href="/products" class="btn btn-primary">Back</a>
-            @else
-                <a href="/products/{{$id}}" class="btn btn-primary">View</a>
-                <a href="/products/{{$id}}/edit" class="btn btn-primary">Edit</a>
-                <form method="post" action="/products/{{$id}}">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-primary">Delete</button>
-                </form>
-            @endif
-            <button type="submit" class="btn btn-primary">Buy Now</button>
+            @auth
+                @if($id == '#')
+                    <a href="/products/category" class="btn btn-primary">Back</a>
+                @else
+                    <a href="/products/{{$id}}" class="btn btn-primary">View</a>
+                    <a href="/products/{{$id}}/edit" class="btn btn-primary">Edit</a>
+                    <form method="post" action="/products/{{$id}}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-primary">Delete</button>
+                    </form>
+                @endif
+            @endauth
+            @guest
+                <button type="submit" class="btn btn-primary">Buy Now</button>
+            @endguest
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-sidebar>
+    <x-sidebar title="Category">
         <div class="grid grid-cols-4 gap-2">
             @foreach($productCategory as $category)
                 <div class="card card-border bg-base-100 w-96">
