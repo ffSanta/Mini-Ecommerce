@@ -4,14 +4,14 @@
     'price' => '0.00',
     'id' => '#',
 ])
-<div class="card bg-base-100 w-96 shadow-sm">
+<div class="card bg-base-100 w-100 m-2 shadow-sm">
     <figure>
         <img
             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
             alt="Shoes"/>
     </figure>
     <div class="card-body">
-        <div class="grid grid-cols-6 gap-4">
+        <div class="grid grid-cols-6">
             <p class="ml-5 text-xl col-start-1 col-end-5 ">{{$name}}</p>
             <p class="text-xl text-center col-span-2 col-end-7 ">{{$price}}</p>
             <p class="ml-5 text-xl  col-start-1 col-end-7 ">{{$description}}</p>
