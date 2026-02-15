@@ -30,7 +30,7 @@ class ProductCategoriesController extends Controller
     public function storeCategory(Request $request)
     {
         $data = $request->validate([
-            'name'=>'required|unique:product_categories',
+            'name'=>'required|unique:product_categories|string|max:18',
         ]);
         ProductCategories::create($data);
         return redirect('/products/category');

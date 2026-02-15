@@ -6,13 +6,22 @@
             <legend class="fieldset-legend">Update Products</legend>
 
             <label class="label">name</label>
-            <input type="text" class="input" placeholder="name" name="name"  value="{{$product->name}}" required/>
+            <input type="text" class="input" placeholder="name" name="name"  value="{{$product->name}}"/>
+            @error('name')
+            <span class="text-red-400">{{ $message }}</span>
+            @enderror
 
             <label class="label">description</label>
-            <input type="text" class="input" placeholder="description" name="description"  value="{{$product->description}}" required/>
+            <input type="text" class="input" placeholder="description" name="description"  value="{{$product->description}}"/>
+            @error('description')
+            <span class="text-red-400">{{ $message }}</span>
+            @enderror
 
             <label class="label">price</label>
-            <input type="text" class="input" placeholder="price" name="price" value="{{$product->price}}" required/>
+            <input type="text" class="input" placeholder="price" name="price" value="{{$product->price}}" />
+            @error('price')
+            <span class="text-red-400">{{ $message }}</span>
+            @enderror
 
             <button class="btn btn-neutral mt-4">Update</button>
         </fieldset>

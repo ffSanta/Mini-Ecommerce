@@ -12,8 +12,8 @@ class LoginController extends Controller
     }
     public function store(Request $request){
         $data = $request->validate([
-            'email'=>'required|email',
-            'password'=>'required',
+            'email'=>'required|email|string',
+            'password'=>'required|string',
         ]);
 
         if (Auth::attempt($data)) {
@@ -21,8 +21,8 @@ class LoginController extends Controller
             return redirect()->intended('/products/category');
         }
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            'err' => 'email or password is not correct',
+        ])->onlyInput('err');
 
     }
 

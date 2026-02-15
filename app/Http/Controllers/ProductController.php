@@ -39,9 +39,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'price' => 'required | decimal:0,2',
-            'description' => 'required',
+            'name' => 'required | string | max:18',
+            'price' => 'required | decimal:0,2 | max:1000',
+            'description' => 'required | string | max:255',
         ]);
 
         Product::create([
@@ -76,9 +76,9 @@ class ProductController extends Controller
     public function update(Request $request, Product $id)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'price' => 'required | decimal:0,2',
-            'description' => 'required',
+            'name' => 'required | string | max:18',
+            'price' => 'required | decimal:0,2 | max:1000',
+            'description' => 'required | string | max:255',
         ]);
         $id->update($data);
         return redirect('/products');

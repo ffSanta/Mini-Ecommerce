@@ -19,8 +19,6 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'create']);
 Route::PUT('/register', [RegisterController::class, 'store']);
 
-//category
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/products/category', [ProductCategoriesController::class, 'category'])->name('products.category');
