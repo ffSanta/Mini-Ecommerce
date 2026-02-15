@@ -19,16 +19,18 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'create']);
 Route::PUT('/register', [RegisterController::class, 'store']);
 
+Route::get('/products/category', [ProductCategoriesController::class, 'category'])->name('products.category');
+Route::get('/products/showAll/{id}', [ProductController::class, 'showAll']);
+
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/products/category', [ProductCategoriesController::class, 'category'])->name('products.category');
     Route::get('/products/category/create', [ProductCategoriesController::class, 'createCategory']);
     Route::put('/products/category', [ProductCategoriesController::class, 'storeCategory']);
     Route::get('/products/category/{id}', [ProductCategoriesController::class, 'show']);
     Route::get('/products/category/{id}/edit', [ProductCategoriesController::class, 'editCategory']);
     Route::patch('/products/category/{id}', [ProductCategoriesController::class, 'updateCategory']);
     Route::delete('/products/category/{id}', [ProductCategoriesController::class, 'destroyCategory']);
-
+    
     Route::get('/products/query/{id}', [ProductController::class, 'query']);
     Route::get('/products/create/{categoryId}', [ProductController::class, 'create']);
     Route::put('/products', [ProductController::class, 'store']);

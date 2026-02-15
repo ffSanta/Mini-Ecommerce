@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('products.index',['products'=>$products]);
+        $productCategories = ProductCategories::all();
+        return view('products.index',['products'=>$products, 'categories'=>$productCategories]);
     }
 
     public function query(string $categoryId)
@@ -60,6 +62,14 @@ class ProductController extends Controller
     public function show(Product $id)
     {
         return view('products.show',['product'=>$id]);
+    }
+
+    public function showAll(string $id)
+    {
+        $products = Product::query()->where([
+            'product_categories_id' => $id
+        ])->get();
+        return view('products.showAll',['products'=>$products]);
     }
 
     /**
