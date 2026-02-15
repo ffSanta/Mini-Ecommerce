@@ -1,5 +1,5 @@
 <x-layout>
-    <form method="post" action="/products/{{$product->id}}">
+    <form method="post" action="/products/{{$product->id}}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 m-auto">
@@ -12,7 +12,7 @@
             @enderror
 
             <label class="label">description</label>
-            <input type="text" class="input" placeholder="description" name="description"  value="{{$product->description}}"/>
+            <textarea class="textarea" placeholder="description" name="description">{{$product->description}}</textarea>
             @error('description')
             <span class="text-red-400">{{ $message }}</span>
             @enderror
@@ -20,6 +20,13 @@
             <label class="label">price</label>
             <input type="text" class="input" placeholder="price" name="price" value="{{$product->price}}" />
             @error('price')
+            <span class="text-red-400">{{ $message }}</span>
+            @enderror
+
+            <label class="label">Image</label>
+            <input type="file" class="file-input" name="image" value="{{$product->image}}"/>
+            <label class="label">Max size 1024MB</label>
+            @error('image')
             <span class="text-red-400">{{ $message }}</span>
             @enderror
 

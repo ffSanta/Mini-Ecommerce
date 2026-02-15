@@ -97,7 +97,19 @@ class ProductController extends Controller
             'name' => 'required | string | max:18',
             'price' => 'required | decimal:0,2 | max:1000',
             'description' => 'required | string | max:255',
+            'image' => 'required | mimes:jpeg,jpg,png | max:1024',
         ]);
+
+        if($request->has('image')){
+            $destination = 'images/'.$id->image;
+            if(\File::exists($destination)){
+                \File::delete($destination);
+            }
+
+            $filename = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/images/'), $filename);
+            $data['image'] = $filename;
+        }
         $id->update($data);
         return redirect('/products');
     }
@@ -107,6 +119,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $id)
     {
+        if($id->image){
+            $destination = 'images/'.$id->image;
+            if(\File::exists($destination)){
+                \File::delete($destination);
+            }
+        }
         $id->delete();
         return redirect('/products');
     }
