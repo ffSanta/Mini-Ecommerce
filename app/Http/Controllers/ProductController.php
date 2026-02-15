@@ -40,11 +40,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required | string | max:18',
             'price' => 'required | decimal:0,2 | max:1000',
             'description' => 'required | string | max:255',
+            'image' => 'required | mimes:jpeg,jpg,png | max:1024',
         ]);
+
+        if($request->hasFile('image')){
+            $filename = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/images/'), $filename);
+            $data['image'] = $filename;
+        }
 
         Product::create([
             'user_id' => Auth::id(),
@@ -52,6 +59,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
+            'image' => $data['image'],
         ]);
         return redirect('/products/query/'.$request->category_id);
     }

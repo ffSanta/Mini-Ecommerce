@@ -3,11 +3,13 @@
     'description' => 'NULL',
     'price' => '0.00',
     'id' => '#',
+    'image' => 'NULL'
 ])
 <div class="card bg-base-100 w-100 m-2 shadow-sm">
     <figure>
         <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+            class="w-2xl h-65"
+            src="{{asset('/images/'.$image)}}"
             alt="Shoes"/>
     </figure>
     <div class="card-body">

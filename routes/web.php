@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products/category/{id}/edit', [ProductCategoriesController::class, 'editCategory']);
     Route::patch('/products/category/{id}', [ProductCategoriesController::class, 'updateCategory']);
     Route::delete('/products/category/{id}', [ProductCategoriesController::class, 'destroyCategory']);
-    
+
     Route::get('/products/query/{id}', [ProductController::class, 'query']);
     Route::get('/products/create/{categoryId}', [ProductController::class, 'create']);
     Route::put('/products', [ProductController::class, 'store']);

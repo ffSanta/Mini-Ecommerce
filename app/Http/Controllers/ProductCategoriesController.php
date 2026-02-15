@@ -41,8 +41,10 @@ class ProductCategoriesController extends Controller
      */
     public function show(ProductCategories $id)
     {
-        $productCategory = ProductCategories::query()->where('id',$id)->get();
-        return view('products.query',['products' => $productCategory,'categoryId'=>$id]);
+//        $productCategory = ProductCategories::query()->where('id',$id)->get();
+//        return view('products.category.show',['productCategory'=>$id]);
+
+//        return view('products.query',['products' => $productCategory,'categoryId'=>$id]);
     }
 
     /**
