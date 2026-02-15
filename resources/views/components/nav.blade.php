@@ -12,7 +12,7 @@
             </div>
             <div
                 tabindex="0"
-                class="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
+                class="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-40 shadow">
                 <div class="card-body">
                     <span class="text-lg font-bold">8 Items</span>
                     <span class="text-info">Subtotal: $999</span>
@@ -24,30 +24,14 @@
 
         </div>
         <div class="dropdown dropdown-end">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                    <img
-                        alt="Tailwind CSS Navbar component"
-                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                </div>
-            </div>
-            <ul
-                tabindex="-1"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                <li>
-                    <a class="justify-between">
-                        Profile
-                        <span class="badge">New</span>
-                    </a>
-                </li>
-                <li><a href="/products">Products</a></li>
+            <div class="flex-1">
                 @auth
-                    <li><a href="/logout">Logout</a></li>
+                   <a href="/logout" class="btn btn-ghost text-xl" >Logout</a>
                 @endauth
                 @guest
-                    <li><a href="/login">LogIn</a></li>
+                    <a href="/login" class="btn btn-ghost text-xl" >LogIn</a>
                 @endguest
-            </ul>
+            </div>
         </div>
     </div>
 </div>

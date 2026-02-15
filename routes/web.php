@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
-//Route::get('/', function () {
-//    return redirect('/products');
-//});
+Route::get('/', function () {
+    return redirect('/products');
+});
 
 Route::get('/products', [ProductController::class, 'index']);
 
@@ -21,6 +21,7 @@ Route::PUT('/register', [RegisterController::class, 'store']);
 
 Route::get('/products/category', [ProductCategoriesController::class, 'category'])->name('products.category');
 Route::get('/products/showAll/{id}', [ProductController::class, 'showAll']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
 
 Route::middleware(['auth'])->group(function () {
 
@@ -34,7 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products/query/{id}', [ProductController::class, 'query']);
     Route::get('/products/create/{categoryId}', [ProductController::class, 'create']);
     Route::put('/products', [ProductController::class, 'store']);
-    Route::get('/products/{id}', [ProductController::class, 'show']);
     Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
     Route::PATCH('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);

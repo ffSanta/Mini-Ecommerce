@@ -6,7 +6,7 @@
             <legend class="fieldset-legend">Update Products</legend>
 
             <label class="label">name</label>
-            <input type="text" class="input" placeholder="name" name="name"  value="{{$productCategory->name}}"/>
+            <input type="text" class="input" placeholder="name" name="name"  value="{{$productCategory->name}}" autocomplete="off"/>
             @error('name')
             <span class="text-red-400">{{ $message }}</span>
             @enderror

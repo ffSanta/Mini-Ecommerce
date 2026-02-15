@@ -50,10 +50,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required | string | max:18',
-            'price' => 'required | decimal:0,2 | max:1000',
+            'name' => 'required | string | max:25',
+            'price' => 'required | decimal:0,2 | max:9000',
             'description' => 'required | string | max:255',
-            'image' => 'required | mimes:jpeg,jpg,png | max:1024',
+            'image' => 'required | mimes:png,jpg,jpeg | max:1024',
         ]);
 
         if ($request->hasFile('image')) {
@@ -78,7 +78,7 @@ class ProductController extends Controller
      */
     public function show(Product $id)
     {
-        Gate::authorize('view', $id);
+//        Gate::authorize('view', $id);
         return view('products.show', ['product' => $id]);
     }
 
@@ -106,8 +106,8 @@ class ProductController extends Controller
     {
         if ($request->image === null) {
             $data = $request->validate([
-                'name' => 'required | string | max:18',
-                'price' => 'required | decimal:0,2 | max:1000',
+                'name' => 'required | string | max:25',
+                'price' => 'required | decimal:0,2 | max:9000',
                 'description' => 'required | string | max:255',
             ]);
             $id->update($data);
@@ -115,8 +115,8 @@ class ProductController extends Controller
         }
 
         $data = $request->validate([
-            'name' => 'required | string | max:18',
-            'price' => 'required | decimal:0,2 | max:1000',
+            'name' => 'required | string | max:25',
+            'price' => 'required | decimal:0,2 | max:9000',
             'description' => 'required | string | max:255',
             'image' => 'required | mimes:jpeg,jpg,png | max:1024',
         ]);

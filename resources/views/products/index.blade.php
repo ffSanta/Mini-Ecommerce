@@ -3,7 +3,7 @@
         <div class="grid grid-cols-4 gap-2">
             @foreach($products as $product)
                 <x-card name='{{$product->name}}' description='{{$product->description}}' price="{{$product->price}}"
-                        home="hasId" image="{{$product->image}}"/>
+                        id="{{$product->id}}" home="hasId" image="{{$product->image}}"/>
             @endforeach
         </div>
     </x-sidebar>

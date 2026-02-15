@@ -6,19 +6,19 @@
             <legend class="fieldset-legend">Update Products</legend>
 
             <label class="label">name</label>
-            <input type="text" class="input" placeholder="name" name="name"  value="{{$product->name}}"/>
+            <input type="text" class="input" placeholder="name" name="name"  value="{{$product->name}}" autocomplete="off"/>
             @error('name')
             <span class="text-red-400">{{ $message }}</span>
             @enderror
 
             <label class="label">description</label>
-            <textarea class="textarea" placeholder="description" name="description">{{$product->description}}</textarea>
+            <textarea class="textarea" placeholder="description" name="description" autocomplete="off">{{$product->description}}</textarea>
             @error('description')
             <span class="text-red-400">{{ $message }}</span>
             @enderror
 
             <label class="label">price</label>
-            <input type="text" class="input" placeholder="price" name="price" value="{{$product->price}}" />
+            <input type="text" class="input" placeholder="price" name="price" value="{{$product->price}}" autocomplete="off"/>
             @error('price')
             <span class="text-red-400">{{ $message }}</span>
             @enderror

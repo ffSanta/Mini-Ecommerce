@@ -6,7 +6,7 @@
             <legend class="fieldset-legend">Create Products</legend>
 
             <label class="label">name</label>
-            <input type="text" class="input" placeholder="name" name="name"/>
+            <input type="text" class="input" placeholder="name" name="name" value="{{old('name')}}" autocomplete="off"/>
             @error('name')
             <span class="text-red-400">{{ $message }}</span>
             @enderror

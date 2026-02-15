@@ -9,7 +9,7 @@
             <legend class="fieldset-legend">Login</legend>
 
             <label class="label">Email</label>
-            <input type="email" class="input" placeholder="Email" name="email" value="{{old('email')}}"/>
+            <input type="email" class="input" placeholder="Email" name="email" value="{{old('email')}}" autocomplete="off"/>
             @error('email')
             <span class="text-red-400">{{ $message }}</span>
             @enderror

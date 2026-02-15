@@ -6,19 +6,19 @@
             <legend class="fieldset-legend">Create Products</legend>
 
             <label class="label">name</label>
-            <input type="text" class="input" placeholder="name" name="name" value="{{old('name')}}"/>
+            <input type="text" class="input" placeholder="name" name="name" value="{{old('name')}}" autocomplete="off"/>
             @error('name')
             <span class="text-red-400">{{ $message }}</span>
             @enderror
 
             <label class="label">description</label>
-            <textarea class="textarea" placeholder="description" name="description">{{old('description')}}</textarea>
+            <textarea class="textarea" placeholder="description" name="description" autocomplete="off">{{old('description')}}</textarea>
             @error('description')
             <span class="text-red-400">{{ $message }}</span>
             @enderror
 
             <label class="label">price</label>
-            <input type="text" class="input" placeholder="price" name="price" value="{{old('price')}}"/>
+            <input type="text" class="input" placeholder="price" name="price" value="{{old('price')}}" autocomplete="off"/>
             @error('price')
             <span class="text-red-400">{{ $message }}</span>
             @enderror
