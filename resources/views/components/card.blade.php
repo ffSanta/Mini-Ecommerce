@@ -3,7 +3,8 @@
     'description' => 'NULL',
     'price' => '0.00',
     'id' => '#',
-    'image' => 'NULL'
+    'image' => 'NULL',
+    'home' => 'NULL'
 ])
 <div class="card bg-base-100 w-100 m-2 shadow-sm">
     <figure>
@@ -20,8 +21,10 @@
         </div>
         <div class="card-actions justify-end">
             @auth
-                @if($id == '#')
+                @if($id == '#' && $home == 'NULL')
                     <a href="/products/category" class="btn btn-primary">Back</a>
+                @elseif($home != 'NULL')
+                    <button type="submit" class="btn btn-primary">Buy Now</button>
                 @else
                     <a href="/products/{{$id}}" class="btn btn-primary">View</a>
                     <a href="/products/{{$id}}/edit" class="btn btn-primary">Edit</a>

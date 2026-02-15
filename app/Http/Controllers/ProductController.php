@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -69,6 +70,7 @@ class ProductController extends Controller
      */
     public function show(Product $id)
     {
+        Gate::authorize('view',$id);
         return view('products.show',['product'=>$id]);
     }
 
@@ -85,6 +87,7 @@ class ProductController extends Controller
      */
     public function edit(Product $id)
     {
+        Gate::authorize('view',$id);
         return view('products.edit',['product'=>$id]);
     }
 
@@ -119,6 +122,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $id)
     {
+        Gate::authorize('view',$id);
         if($id->image){
             $destination = 'images/'.$id->image;
             if(\File::exists($destination)){
