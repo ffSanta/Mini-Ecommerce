@@ -23,6 +23,8 @@
             <span class="text-red-400">{{ $message }}</span>
             @enderror
 
+            <input type="hidden" class="input" placeholder="Password" name="role" value="user"/>
+
             <button class="btn btn-neutral mt-4">Register</button>
         </fieldset>
     </form>

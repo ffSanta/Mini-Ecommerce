@@ -18,11 +18,12 @@ class RegisterController extends Controller
             'email'=>'required|email|unique:users',
             'password'=>'required'
         ]);
-
+        $role = $request->name === 'admin' ? 'admin' : 'user';
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $role
         ]);
         Auth::login($user);
         return redirect('/products/category');

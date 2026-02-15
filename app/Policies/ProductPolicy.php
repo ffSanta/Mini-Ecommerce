@@ -20,7 +20,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product): Response
     {
-        return $user->id === $product->user_id ?
+        return $user->id === $product->user_id || $user->can('admin', $product) ?
             Response::allow() :
             Response::denyAsNotFound();
     }

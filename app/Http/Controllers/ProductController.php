@@ -17,16 +17,23 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $productCategories = ProductCategories::all();
-        return view('products.index',['products'=>$products, 'categories'=>$productCategories]);
+        return view('products.index', ['products' => $products, 'categories' => $productCategories]);
     }
 
     public function query(string $categoryId)
     {
         //only member can create guest will see all product
-        $products = Product::query()->where([
-            'user_id' => Auth::id(), 'product_categories_id' => $categoryId
-        ])->get();
-        return view('products.query',['products'=>$products, 'categoryId'=>$categoryId]);
+        if (Gate::allows('admin')) {
+            $products = Product::query()->where([
+                'product_categories_id' => $categoryId
+            ])->get();
+        } else {
+            $products = Product::query()->where([
+                'user_id' => Auth::id(), 'product_categories_id' => $categoryId
+            ])->get();
+        }
+
+        return view('products.query', ['products' => $products, 'categoryId' => $categoryId]);
     }
 
     /**
@@ -34,8 +41,9 @@ class ProductController extends Controller
      */
     public function create(string $categoryId)
     {
-        return view('products.create',['category'=>$categoryId]);
+        return view('products.create', ['category' => $categoryId]);
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -48,7 +56,7 @@ class ProductController extends Controller
             'image' => 'required | mimes:jpeg,jpg,png | max:1024',
         ]);
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $filename = time() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('/images/'), $filename);
             $data['image'] = $filename;
@@ -62,7 +70,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'image' => $data['image'],
         ]);
-        return redirect('/products/query/'.$request->category_id);
+        return redirect('/products/query/' . $request->category_id);
     }
 
     /**
@@ -70,8 +78,8 @@ class ProductController extends Controller
      */
     public function show(Product $id)
     {
-        Gate::authorize('view',$id);
-        return view('products.show',['product'=>$id]);
+        Gate::authorize('view', $id);
+        return view('products.show', ['product' => $id]);
     }
 
     public function showAll(string $id)
@@ -79,7 +87,7 @@ class ProductController extends Controller
         $products = Product::query()->where([
             'product_categories_id' => $id
         ])->get();
-        return view('products.showAll',['products'=>$products]);
+        return view('products.showAll', ['products' => $products]);
     }
 
     /**
@@ -87,8 +95,8 @@ class ProductController extends Controller
      */
     public function edit(Product $id)
     {
-        Gate::authorize('view',$id);
-        return view('products.edit',['product'=>$id]);
+        Gate::authorize('view', $id);
+        return view('products.edit', ['product' => $id]);
     }
 
     /**
@@ -96,6 +104,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $id)
     {
+        if ($request->image === null) {
+            $data = $request->validate([
+                'name' => 'required | string | max:18',
+                'price' => 'required | decimal:0,2 | max:1000',
+                'description' => 'required | string | max:255',
+            ]);
+            $id->update($data);
+            return redirect('/products');
+        }
+
         $data = $request->validate([
             'name' => 'required | string | max:18',
             'price' => 'required | decimal:0,2 | max:1000',
@@ -103,9 +121,9 @@ class ProductController extends Controller
             'image' => 'required | mimes:jpeg,jpg,png | max:1024',
         ]);
 
-        if($request->has('image')){
-            $destination = 'images/'.$id->image;
-            if(\File::exists($destination)){
+        if ($request->has('image')) {
+            $destination = 'images/' . $id->image;
+            if (\File::exists($destination)) {
                 \File::delete($destination);
             }
 
@@ -122,10 +140,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $id)
     {
-        Gate::authorize('view',$id);
-        if($id->image){
-            $destination = 'images/'.$id->image;
-            if(\File::exists($destination)){
+        Gate::authorize('view', $id);
+        if ($id->image) {
+            $destination = 'images/' . $id->image;
+            if (\File::exists($destination)) {
                 \File::delete($destination);
             }
         }

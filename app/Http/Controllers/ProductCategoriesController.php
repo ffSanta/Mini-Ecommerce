@@ -12,6 +12,9 @@ class ProductCategoriesController extends Controller
      */
     public function category()
     {
+
+        //admin show first fix later sol user id(0) or query
+//        $productCategory = ProductCategories::query()->orderBy('user_id', 'desc')->get();
         $productCategory = ProductCategories::all();
         return view('products.category.index',['productCategory'=>$productCategory]);
     }

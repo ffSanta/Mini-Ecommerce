@@ -24,7 +24,7 @@
             @enderror
 
             <label class="label">Image</label>
-            <input type="file" class="file-input" name="image" value="{{$product->image}}"/>
+            <input type="file" class="file-input" name="image"/>
             <label class="label">Max size 1024MB</label>
             @error('image')
             <span class="text-red-400">{{ $message }}</span>
