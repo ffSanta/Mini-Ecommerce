@@ -34,11 +34,19 @@ COPY . .
 # Install Laravel dependencies
 RUN composer install --optimize-autoloader --no-interaction --no-dev
 
-# Generate app key if missing (safe for Railway)
+# Create required Laravel directories
+RUN mkdir -p storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+
+# Set correct permissions
+RUN chmod -R 775 storage bootstrap/cache
+
+# Generate app key if missing
 RUN php artisan key:generate || true
 
-# Expose Railway port
 EXPOSE 8000
 
-# Start Laravel
 CMD php artisan serve --host=0.0.0.0 --port=8000
