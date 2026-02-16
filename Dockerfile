@@ -44,9 +44,6 @@ RUN mkdir -p storage/framework/cache \
 # Set correct permissions
 RUN chmod -R 775 storage bootstrap/cache
 
-# Generate app key if missing
-RUN php artisan key:generate || true
-
 EXPOSE 8000
 
 CMD php artisan serve --host=0.0.0.0 --port=8000
