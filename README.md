@@ -7,53 +7,45 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Mini-Ecommerce
+โปรเจคอยู่ระหว่างพัฒนา 70 % 
+- ระบบจัดการคำสั่งซื้อ (Orders) ซึ่งอยู่ระหว่างการออกแบบและปรับโครงสร้างฐานข้อมูล
+- การปรับปรุงประสิทธิภาพของระบบเมื่อมีข้อมูลในฐานข้อมูลมากขึ้น
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Overview
+ระบบเว็บ e-commerce ขนาดเล็ก พัฒนาด้วย Laravel และ Blade รองรับระบบสิทธิ์ผู้ใช้และการเข้าถึงแบบ Role-based (Authentication / Authorization ) โดยใช้ตัว Gate ซึ่งในโปรเจคนี้จะเน้นไปทางการใช้ feature ของ Laravel เป็นหลัก
+ระบบฐานข้อมูลมีการทำเป็น Relational Database มีการจัดหน้าด้วย layout components และใช้ DaisyUI, Tailwind CSS UI ซึ่งทั้งคู่ได้ปรับแต่งด้วย Tailwind CSS อีกที
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Database Design
+ฐานข้อมูลถูกออกแบบโดยใช้ความสัมพันธ์แบบ Relational เพื่อรองรับการจัดการข้อมูลอย่างเป็นระบบ
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- ความสัมพันธ์ระหว่าง User และ Product เป็นแบบ One-to-Many  
+- ความสัมพันธ์ระหว่าง Product และ Category เป็นแบบ Many-to-One  
+  
+## Features
+- ระบบสมัครสมาชิก / เข้าสู่ระบบ (Login / Register)
+- การกำหนดสิทธิ์และให้สิทธิ์การเข้าถึง (Guest, User, Admin)
+- จัดสินค้าและหมวดหมู่
+- Guest สามารถดูสินค้าที่ User,Admin สร้างขึ้นได้
+- User สามารถ(เพิ่ม แก้ไข ลบ )สินค้าลงตามหมวดหมู่ที่เลือก(อัพโหลดภาพได้) และจะไม่เห็นสินค้าของคนอื่นในหน้าหมวดหมู่ ไม่สามารถปรับแต่งหรือลบสินค้าของ admin และ user คนอื่นได้
+- Admin สามารถ( เพิ่ม แก้ไข ลบ )สินค้าของUserได้ และสร้างหมวดหมู่ได้ มีสิทธิ์เหมือน User
 
-## Learning Laravel
+## Tech Stack
+- Laravel, Blade
+- Postgresql
+- Tailwind / DaisyUI
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Demo
+https://mini-ecommerce-production-bc09.up.railway.app/products
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Demo Account
+User:
+- Email: test@gmail.com
+- Password: test123
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Admin:
+- Email: admin@gmail.com
+- Password: admin123
 
 ## License
-
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
