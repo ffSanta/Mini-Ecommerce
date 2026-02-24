@@ -11,7 +11,7 @@
         <img
             class="w-2xl h-65"
             src="{{asset('/images/'.$image)}}"
-            alt="Shoes"/>
+            alt=""/>
     </figure>
     <div class="card-body">
         <div class="grid grid-cols-6">
