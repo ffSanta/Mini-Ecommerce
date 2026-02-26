@@ -1,9 +1,9 @@
 <x-layout>
     <x-sidebar title="Category" :category="$productCategory">
-        <div class="grid grid-cols-4 gap-2">
+        <div class="max-sm:block grid max-lg:grid-cols-2 grid-cols-4 gap-2">
             @foreach($productCategory as $category)
 
-                <div class="card card-border bg-base-100 shadow-sm m-2 w-96">
+                <div class="card card-border bg-base-100 shadow-sm m-2 lg:w-96">
                     <div class="card-body">
                         <h2 class="text-2xl text-center p-8 ">{{$category->name}}</h2>
                         @auth

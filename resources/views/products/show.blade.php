@@ -1,11 +1,12 @@
 <x-layout>
     <x-sidebar title="Product">
-                <div class="card bg-base-100 w-300 h-180 shadow-sm mt-10 m-auto ">
+                <div class="card bg-base-100 shadow-sm
+                lg:w-300 lg:h-180 lg:mt-10 lg:m-auto ">
                     <figure>
                         <img
-                            class="w-3xl h-3xl "
+                            class="w-full h-3xl"
                             src="{{asset('/images/'.$product->image)}}"
-                            alt="Shoes"/>
+                            alt=""/>
                     </figure>
                     <div class="card-body">
                         <div class="grid grid-cols-6 gap-4">

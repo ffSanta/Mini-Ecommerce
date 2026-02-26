@@ -7,7 +7,7 @@
     'home' => 'NULL',
     'amount' => '0',
 ])
-<div class="card bg-base-100 w-100 m-2 shadow-sm">
+<div class="card bg-base-100 lg:w-100 m-2 shadow-sm">
     <figure>
         <img
             class="w-2xl h-65"
