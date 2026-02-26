@@ -2,6 +2,7 @@
 
 use App\Models\Orders;
 use App\Models\ProductCategories;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
 
             $table->id();
-            $table->foreignIdFor(Orders::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(ProductCategories::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('description');

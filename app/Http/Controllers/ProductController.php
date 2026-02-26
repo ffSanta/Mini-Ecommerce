@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
 use App\Models\Product;
 use App\Models\ProductCategories;
 use Illuminate\Http\Request;
@@ -47,6 +48,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
         $data = $request->validate([

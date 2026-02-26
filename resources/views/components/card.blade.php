@@ -4,7 +4,8 @@
     'price' => '0.00',
     'id' => '#',
     'image' => 'NULL',
-    'home' => 'NULL'
+    'home' => 'NULL',
+    'amount' => '0',
 ])
 <div class="card bg-base-100 w-100 m-2 shadow-sm">
     <figure>
@@ -37,7 +38,7 @@
             @endauth
             @guest
                 <a href="/products/{{$id}}" class="btn bg-gray-100">View</a>
-                <button type="submit" class="btn bg-gray-100">Buy Now</button>
+                <a href="" type="submit" class="btn bg-gray-100">Buy Now</a>
             @endguest
         </div>
     </div>
